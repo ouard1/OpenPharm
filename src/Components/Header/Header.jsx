@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import NavBar from "../NavBar/NavBar";
 
@@ -10,8 +11,9 @@ const Header = () => {
           </div>
           <NavBar />
           <div className="flex gap-3">
-            <Button text="login" />
-            <Button text="sign up" clicked />
+            <Link to='/login'><Button text="login" /></Link>
+            <Link to='/signup'><Button text="sign up" clicked /></Link>
+            
           </div>
         </div>
       </div>
