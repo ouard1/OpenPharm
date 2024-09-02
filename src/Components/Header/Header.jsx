@@ -15,7 +15,7 @@ const Header = () => {
                         <Button text="Se connecter" className="bg-transparent border border-[#00157C] text-white rounded-2xl hover:bg-[#f0f0f0] hover:text-[#00157C]" />
                     </Link>
                     <Link to='/signup'>
-                        <Button text="S'inscrire" className="bg-[#00157C] text-white border border-2 border-[#f0f0f0] rounded-2xl hover:bg-[#f0f0f0] hover:text-[#00157C]" />
+                        <Button text="S'inscrire" className="bg-transparent text-[#f0f0f0] border border-1 border-[#f0f0f0] rounded-2xl hover:bg-[#f0f0f0] hover:text-[#00157C]" />
                     </Link>
                 </div>
             </div>

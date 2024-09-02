@@ -1,21 +1,13 @@
 import React from "react";
 import ElasticsearchAPIConnector from '@elastic/search-ui-elasticsearch-connector';
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
-import {
-  ErrorBoundary,
-  Facet,
-  SearchProvider,
-  SearchBox,
-  Results,
-  Paging,
-  ResultsPerPage
-} from "@elastic/react-search-ui";
+import { ErrorBoundary, Facet, SearchProvider, SearchBox, Results, Paging, ResultsPerPage } from "@elastic/react-search-ui";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../Components/Button/Button";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
-import  CustomResult  from './CustomResultsView';
+import CustomResult from './CustomResultsView';
 
 
 
@@ -92,22 +84,38 @@ const Home = () => (
       </div>
       <div className="herotwo bg-[#F8F9FA] ">
         <div className="container mx-auto">
-          <div className="cont2 relative bottom-12 text-center w-3/5 mx-auto pt-7 pb-7 px-10 bg-[#d2d9ff] shadow-md  rounded-lg">
-            <SearchBox
-              autocompleteMinimumCharacters={3}
-              autocompleteResults={{
-                linkTarget: "_blank",
-                sectionTitle: "Results",
-                titleField: "Nom Commercial",
-                urlField: "url",
-                shouldTrackClickThrough: true
-              }}
-              autocompleteSuggestions={true}
-              debounceLength={0}
-             
-              inputProps={{ placeholder: "Entrez le nom du médicament à rechercher" }}
-              className="border-[#d2d9ff] border w-full px-3 py-3 focus:border-[#565E6D] outline-none"
-            />
+          <div className="cont2 relative bottom-12 text-center w-3/5 mx-auto pt-7 pb-9 px-10 bg-[#d2d9ff] shadow-md  rounded-lg">
+          <SearchBox
+  autocompleteMinimumCharacters={3}
+  autocompleteResults={{
+    linkTarget: "_blank",
+    sectionTitle: "Results",
+    titleField: "Nom Commercial",
+    urlField: "url",
+    shouldTrackClickThrough: true,
+  }}
+  autocompleteSuggestions={true}
+  debounceLength={0}
+  inputView={({ getInputProps, getButtonProps }) => (
+    <div className="relative w-full max-w-xxl text-left  ">
+      <input
+        {...getInputProps({
+          placeholder: "Entrez le nom du médicament à rechercher",
+        })}
+        className="py-4 px-7 w-full bg-white border border-[#d2d9ff] rounded-md placeholder-gray-500 text-sm focus:outline-none focus:border-[#898989]"
+      />
+      <button
+        {...getButtonProps()}
+        className="absolute right-0 top-0 bottom-0 flex items-center justify-center px-4 text-gray-500"
+        aria-label="Search"
+      >
+        <FontAwesomeIcon icon={faSearch} />
+      </button>
+    </div>
+  )}
+/>
+
+
             
           </div>
           <h3 className="text-xl font-semibold">Results</h3>
