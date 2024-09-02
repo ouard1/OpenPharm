@@ -19,7 +19,7 @@ import  CustomResult  from './CustomResultsView';
 
 
 
-// Elasticsearch connector configuration
+
 const connector = new ElasticsearchAPIConnector({
   host: "https://localhost:9200",
   index: "medicine-index",
@@ -111,9 +111,9 @@ const Home = () => (
           </div>
           <h3 className="text-xl font-semibold">Results</h3>
           
-          {/* Grid layout for facets and results */}
+        
           <div className="grid grid-cols-12 gap-4 mt-5">
-            {/* Facets on the left (column 1-3) */}
+           
             <div className="col-span-3">
               <Facet key={"1"} field={"Type.keyword"} label={"Type"} />
               <Facet key={"2"} field={"Pays.keyword"} label={"Pays"} />
@@ -122,7 +122,7 @@ const Home = () => (
               <Facet key={"5"} field={"ctherapeutique.keyword"} label={"ctherapeutique"} />
             </div>
 
-            {/* Results in the center (column 4-12) */}
+          
             <div className="col-span-9">
               <Results
                resultView={CustomResult}
@@ -132,23 +132,12 @@ const Home = () => (
                
               />
               <Paging />
-              <ResultsPerPage />
+              
             </div>
           </div>
         </div>
       </div>
-      <div className="changepages text-center">
-        <div className="box p-24 flex gap-2 justify-center items-center">
-          <button><FontAwesomeIcon icon={faChevronLeft} className="text-[#565E6D] mr-4" /></button>
-          <Button text="1" clicked padding={"px-2 py-1"} />
-          <Button text="2" padding={"px-2 py-1"} />
-          <Button text="3" padding={"px-2 py-1"} />
-          <Button text="..." padding={"px-2 py-1"} />
-          <Button text="10" padding={"px-2 py-1"} />
-          <Button text="11" padding={"px-2 py-1"} />
-          <button><FontAwesomeIcon icon={faChevronRight} className="text-[#565E6D] ml-4" /></button>
-        </div>
-      </div>
+     
       <Footer />
     </ErrorBoundary>
   </SearchProvider>
