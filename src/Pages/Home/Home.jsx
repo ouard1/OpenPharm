@@ -82,17 +82,17 @@ const Home = () => (
     <ErrorBoundary>
       <Header />
       <div className="break h-16"></div>
-      <div className="hero bg-[#F3F4F6]">
+      <div className="hero bg-[#edf0ff]">
         <div className="container mx-auto">
           <div className="cont1 text-center w-4/5 mx-auto pt-5 pb-16">
-            <h2 className="text-5xl font-bold w-full">Recherchez votre medicament</h2>
-            <p className="text-lg font-semibold">-Possibility of adding a slogan -</p>
-          </div>
+            <h2 className="text-5xl font-bold w-full text-[#00157c] pb-4 pt-2 " style={{ fontFamily: 'Poppins, sans-serif' }}>Recherchez votre medicament</h2>
+            <p className="text-lg font-thin text-[#000625] leading-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>Votre source d'information de confiance</p>
+          </div> 
         </div>
       </div>
-      <div className="herotwo bg-[#F8F9FA]">
+      <div className="herotwo bg-[#F8F9FA] ">
         <div className="container mx-auto">
-          <div className="cont2 relative bottom-10 text-center w-3/5 mx-auto pt-5 pb-8 px-10 bg-[#fff]">
+          <div className="cont2 relative bottom-12 text-center w-3/5 mx-auto pt-7 pb-7 px-10 bg-[#d2d9ff] shadow-md  rounded-lg">
             <SearchBox
               autocompleteMinimumCharacters={3}
               autocompleteResults={{
@@ -104,10 +104,11 @@ const Home = () => (
               }}
               autocompleteSuggestions={true}
               debounceLength={0}
-              placeholder="Entrez le nom du médicament à rechercher"
-              className="border-[#C1B9ED] border w-full px-3 py-3 focus:border-[#565E6D] outline-none"
+             
+              inputProps={{ placeholder: "Entrez le nom du médicament à rechercher" }}
+              className="border-[#d2d9ff] border w-full px-3 py-3 focus:border-[#565E6D] outline-none"
             />
-            <p className="text-left mt-3 text-sm text-[#727477]">Rechercher par lettre</p>
+            
           </div>
           <h3 className="text-xl font-semibold">Results</h3>
           
