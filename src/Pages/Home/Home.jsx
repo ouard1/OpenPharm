@@ -8,7 +8,7 @@ import Button from "../../Components/Button/Button";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import CustomResult from './CustomResultsView';
-
+import './styles.css';
 
 
 
@@ -22,6 +22,8 @@ const connector = new ElasticsearchAPIConnector({
   }
 });
 
+
+
 const config = {
   searchQuery: {
     search_fields: {
@@ -29,7 +31,9 @@ const config = {
       "dci": { weight: 1 }
     },
     result_fields: {
-      "Nom Commercial": { snippet: {} }
+      "Nom Commercial": { snippet: {} },
+      "Dosage": { snippet: {} }, 
+      "Forme": { snippet: {} } 
     },
     disjunctiveFacets: [
       "labo.keyword",
@@ -116,31 +120,40 @@ const Home = () => (
 />
 
 
-            
           </div>
-          <h3 className="text-xl font-semibold">Results</h3>
+          
           
         
-          <div className="grid grid-cols-12 gap-4 mt-5">
+          <div className="w-full grid grid-auto-columns grid-cols-12  mt-5.5">
            
-            <div className="col-span-3">
-              <Facet key={"1"} field={"Type.keyword"} label={"Type"} />
-              <Facet key={"2"} field={"Pays.keyword"} label={"Pays"} />
-              <Facet key={"3"} field={"labo.keyword"} label={"Laboratoire"} />
-              <Facet key={"4"} field={"cpharmaco.keyword"} label={"cpharmaco"} />
-              <Facet key={"5"} field={"ctherapeutique.keyword"} label={"ctherapeutique"} />
+            <div className=" col-span-2  mr-10 ">
+              <Facet key={"1"} field={"Type.keyword"} searchPlaceholder="rechercher type..."  label={<span style={{ color: '#00A896',fontFamily: 'Poppins, sans-serif',fontSize: '12px' }} >Type</span>}isFilterable={true} />
+              <Facet key={"2"} field={"Pays.keyword"}  showSearch={true} searchPlaceholder="rechercher pays..." label={<span style={{ color: '#00A896',fontFamily: 'Poppins, sans-serif',fontSize: '12px' }} >Pays</span>}/>
+              <Facet key={"3"} field={"labo.keyword"} searchPlaceholder="rechercher labo ..."   isFilterable={true}label={<span style={{ color: '#00A896',fontFamily: 'Poppins, sans-serif',fontSize: '12px' }} >Laboratoire</span>}/>
+              <Facet key={"4"} field={"cpharmaco.keyword"}  searchPlaceholder="rechercher c.pharmaco..."  isFilterable={true}label={<span style={{ color: '#00A896',fontFamily: 'Poppins, sans-serif',fontSize: '12px' }} >C.pharmaceutique</span>} />
+              <Facet key={"5"} field={"ctherapeutique.keyword"}  searchPlaceholder="rechercher c.therapo..." isFilterable={true}label={<span style={{ color: '#00A896',fontFamily: 'Poppins, sans-serif',fontSize: '12px' }} >C.therapeutique</span>}/>
             </div>
 
           
-            <div className="col-span-9">
+            <div className="col-span-8">
+              
+            <h3 className="relative text-3xl font-bold text-[#4a4a4a] inline-block mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+  
+   <span className="bg-gradient-to-r from-[#D1D7FF] to-[#D1D7FF] bg-no-repeat bg-[length:100%_40%] bg-bottom ">
+    Result
+  </span>
+</h3>
+
+
+
               <Results
                resultView={CustomResult}
                 shouldTrackClickThrough={true}
                 titleField="Nom Commercial"
-                className="font-normal text-[#8D8F91] bg-[#fff] border-[#E3E6EA] border w-full px-3 py-1"
+                className="font-normal text-[#8D8F91] bg-transparent border-transparent border w-full px-3 py-1"
                
               />
-              <Paging />
+              <Paging className="custom-paging"/>
               
             </div>
           </div>

@@ -1,0 +1,26 @@
+/* styles.css */
+.custom-paging {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .custom-paging .paging-link {
+    background-color: #00157C;
+    color: white;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-paging .paging-link:hover {
+    background-color: #00A896;
+  }
+  
+  .custom-paging .active {
+    background-color: #00A896;
+    font-weight: bold;
+  }
+  
